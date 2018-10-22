@@ -15,20 +15,25 @@ namespace Ejercicio1
         {
 
         }
-        public Masajista(int id, int edad, string nombre, string apellidos, int aniosExperiencia,string titulacion, bool Viajar, bool Concentrarse) : base(id, edad, nombre, apellidos,Viajar, Concentrarse)
+        public Masajista(int id, int edad, string nombre, string apellidos, int aniosExperiencia,string titulacion) : base(id, edad, nombre, apellidos)
         {
             this.AniosExperencia = aniosExperiencia;
             this.Titulacion = titulacion;
         }
 
-        public string MostrarDatosMasajista()
+        public override string ToString()
         {
-            return base.MostrarDatos() + " Años de experiencia: " + AniosExperencia + " Titulación: " + Titulacion;
+            return base.ToString() + "\nAños de experiencia: " + AniosExperencia + "\nTitulación: " + Titulacion;
         }
 
         public void DarMasaje()
         {
-
+            Console.WriteLine("Está dando masajes");
+        }
+        public override void Accion()
+        {
+            base.Accion();
+            DarMasaje();
         }
     }
 }

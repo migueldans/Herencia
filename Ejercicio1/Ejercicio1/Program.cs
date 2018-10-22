@@ -10,47 +10,59 @@ namespace Ejercicio1
     {
         static void Main(string[] args)
         {
-            Entrenador e1 = new Entrenador(1, 56, "Jose", "Cahembra", "oriundo",true,true);
-            
-            Masajista m1 = new Masajista(1, 34, "Bill", "Cosby", 10, "Medico", true, true);
-            Masajista m2 = new Masajista(2, 54, "Juan", "Jose", 40, "Chaman", true, false);
+            Entrenador e1 = new Entrenador(11, 56, "Jose", "Cahembra", "Oriundo");
 
-            Futbolista f1 = new Futbolista(1, 19, "Pepe", "Ruiz", 9, "delantero", true, true);
-            Futbolista f2 = new Futbolista(2, 29, "Bobe", "Bobeto", 9, "medio", true, false);
-            Futbolista f3 = new Futbolista(3, 16, "Vincent", "Vincenzo", 9, "defensa", true, true);
-            Futbolista f4 = new Futbolista(4, 34, "Fran", "Roche", 9, "portero", true, true);
+            Masajista m1 = new Masajista(21, 34, "Bill", "Cosby", 10, "Medico");
+            Masajista m2 = new Masajista(22, 54, "Juan", "Jose", 40, "Chamán");
 
-            List<Entrenador> ListaEntrenador = new List<Entrenador>
+            Futbolista f1 = new Futbolista(31, 19, "Pepe", "Ruiz", 9, "Delantero");
+            Futbolista f2 = new Futbolista(32, 29, "Bobe", "Bobeto", 9, "Medio");
+            Futbolista f3 = new Futbolista(33, 16, "Vincent", "Vincenzo", 9, "Defensa");
+            Futbolista f4 = new Futbolista(34, 34, "Fran", "Roche", 9, "Portero");
+
+            //Aqui he creado la lista
+            List<SeleccionFutbol> listaSeleccion = new List<SeleccionFutbol>
             {
-                e1
-            };
-            List<Futbolista> ListaFutbolista = new List<Futbolista>
-            {
-                f1,
-                f2,
-                f3,
-                f4
-            };
-            List<Masajista> ListaMasajista = new List<Masajista>
-            {
-                m1,
-                m2
+                e1,m1,m2,f1,f2,f3,f4
             };
 
-            foreach(Entrenador x in ListaEntrenador)
+            //He pasado la lista llena y creado una SeleccionPais
+            SeleccionPais p1 = new SeleccionPais("Selección A",listaSeleccion);
+
+            //He creado una seleccion vacia
+            SeleccionPais p2 = new SeleccionPais("Seleccion A");
+
+            //Con el metodo AñadirIntegrante y pasandole el coche que le quiero meter, lleno la seleccion
+            p2.AñadirIntegrante(e1);
+            p2.AñadirIntegrante(m1);
+            p2.AñadirIntegrante(m2);
+            p2.AñadirIntegrante(f1);
+            p2.AñadirIntegrante(f2);
+            p2.AñadirIntegrante(f3);
+            p2.AñadirIntegrante(f4);
+
+            foreach(SeleccionFutbol seleccion in p2.GetSeleccionPais())
             {
-                Console.WriteLine(x.MostrarDatosEntrenador());
-            }
-            foreach (Futbolista x in ListaFutbolista)
-            {
-                Console.WriteLine(x.MostrarDatosFutbolista());
-            }
-            foreach (Masajista x in ListaMasajista)
-            {
-                Console.WriteLine(x.MostrarDatosMasajista());
+                Console.WriteLine(seleccion.GetType().Name.ToUpper());
+                Console.WriteLine(seleccion.ToString());
+                Console.WriteLine("--------------------------------");
             }
 
+            Console.WriteLine("Número de integrantes: " + p1.GetSeleccionPais().Count);
             Console.ReadLine();
+
+
+            //foreach (SeleccionFutbol seleccion in listaSeleccion)
+            //{
+            //    Console.WriteLine(seleccion.GetType().Name.ToUpper());
+            //    Console.WriteLine(seleccion.ToString());
+            //    seleccion.Accion();
+            //    seleccion.Viajar();
+            //    seleccion.Concentrarse();
+            //    Console.WriteLine("----------------------------------");
+
+            //}
+
         }
     }
 }

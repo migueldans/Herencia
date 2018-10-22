@@ -16,25 +16,30 @@ namespace Ejercicio1
 
         }
 
-        public Futbolista(int id, int edad, string nombre, string apellidos, int dorsal, string demarcacion, bool Viajar, bool Concentrarse) :base(id,edad,nombre,apellidos, Viajar, Concentrarse)
+        public Futbolista(int id, int edad, string nombre, string apellidos, int dorsal, string demarcacion) :base(id,edad,nombre,apellidos)
         {
             this.Dorsal = dorsal;
             this.Demarcacion = demarcacion;
         }
 
-        public string MostrarDatosFutbolista()
+        public override string ToString()
         {
-            return base.MostrarDatos() + " Dorsal: " + Dorsal + " Demarcacion: " + Demarcacion;
+            return base.ToString() + "\nDorsal: " + Dorsal + "\nDemarcación: " + Demarcacion;
         }
 
         public void JugarPartido()
         {
-
+            Console.WriteLine("Está jugando el partido");
         }
 
         public void Entrenar()
         {
-
+            Console.WriteLine("Está entrenando");
+        }
+        public override void Accion()
+        {
+            base.Accion();
+            Entrenar();
         }
     }
 }

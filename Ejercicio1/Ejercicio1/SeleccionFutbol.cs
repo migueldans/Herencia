@@ -8,82 +8,108 @@ namespace Ejercicio1
 {
     class SeleccionFutbol
     {
-        private int Id, Edad,cont;
-        private string Nombre, Apellidos;
-        bool Viajar=false;
-        bool Concentrarse=false;
+        private int id, edad,cont;
+        private string nombre, apellido;
+        private bool viajar=false;
+        private bool concentrarse=false;
 
         public SeleccionFutbol()
         {
             cont=cont++;
         }
 
-        public SeleccionFutbol(int id, int edad,string nombre,string apellidos,bool Viajar, bool Concentrarse)
+        public SeleccionFutbol(int id, int edad,string nombre,string apellidos)
         {
-            this.Id = id;
-            this.Edad = edad;
-            this.Nombre = nombre;
-            this.Apellidos = apellidos;
-            this.Viajar=false;
-            this.Concentrarse = false;
+            this.id = id;
+            this.edad = edad;
+            this.nombre = nombre;
+            this.apellido = apellidos;
             cont = cont++;
         }
 
         public int GetId()
         {
-            return Id;
+            return id;
         }
         public void SetId(int id)
         {
-            this.Id = id;
+            this.id = id;
         }
         public int GetEdad()
         {
-            return Edad;
+            return edad;
         }
         public void SetEdad(int edad)
         {
-            this.Edad = edad;
+            this.edad = edad;
         }
         public string GetNombre()
         {
-            return Nombre;
+            return nombre;
         }
         public void SetNombre(string nombre)
         {
-            this.Nombre = nombre;
+            this.nombre = nombre;
         }
         public string GetApellidos()
         {
-            return Apellidos;
+            return apellido;
         }
         public void SetApellidos(string apellidos)
         {
-            this.Apellidos = apellidos;
+            this.apellido = apellidos;
         }
 
-        public string MostrarDatos()
+        public override string ToString()
         {
-            return "Id: " + Id + " Edad: " + Edad + " Nombre: " + Nombre + " Apellidos: " + Apellidos+" y "+ Viajar+ " y está "+Concentrarse;
+            return "Id: " + id + " \nEdad: " + edad + " \nNombre: " + nombre + " \nApellidos: " + apellido+ "\n" +GetViajar() + " y " + GetConcentrarse();
         }
-        public void SetConcentrarse(bool concentrarse)
+
+        public void Concentrarse()
         {
-            this.Concentrarse = concentrarse;
+            this.concentrarse = true;
         }
+        public void NoConcentrarse()
+        {
+            this.concentrarse = false;
+        }
+
         public string GetConcentrarse()
         {
-            return "Concentrado";
+            if (concentrarse == true)
+            {
+                return "concentrado";
+            }
+            else
+            {
+                return "no concentrado";
+            }
         }
 
-        public void SetViajar(bool viajar)
+        public void Viajar()
         {
-            this.Viajar = viajar;
+            this.viajar = true;
+        }
+
+        public void NoViajar()
+        {
+            this.viajar = false;
         }
 
         public string GetViajar()
         {
-            return "Ha viajado";
-
+            if (viajar == true)
+            {
+                return "Ha viajado";
+            }
+            else
+            {
+                return "No ha viajado";
+            }
+        }
+        public virtual void Accion()
+        {
+           
         }
         public int Cont (int cont)
         {
