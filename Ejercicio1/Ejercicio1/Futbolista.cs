@@ -27,7 +27,7 @@ namespace Ejercicio1
             return base.ToString() + "\nDorsal: " + Dorsal + "\nDemarcación: " + Demarcacion;
         }
 
-        public void JugarPartido()
+        public void Jugar()
         {
             Console.WriteLine("Está jugando el partido");
         }
@@ -40,6 +40,17 @@ namespace Ejercicio1
         {
             base.Accion();
             Entrenar();
+        }
+        public override void PrepararPartido()
+        {
+            base.PrepararPartido();
+            Entrenar();
+        }
+
+        public override void JugarPartido()
+        {
+            base.JugarPartido();
+            Jugar();
         }
     }
 }

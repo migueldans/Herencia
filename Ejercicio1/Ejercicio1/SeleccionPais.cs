@@ -9,7 +9,7 @@ namespace Ejercicio1
     class SeleccionPais
     {
         private string nombrePais;
-        private List<SeleccionFutbol> participantes;
+        private List<SeleccionFutbol> integrantes;
         //Variables estaticas que uso para contar entrenadores y masajistas que hay en SeleccionPais
         private static int numEntrenador, numMasajista;
 
@@ -17,20 +17,20 @@ namespace Ejercicio1
         public SeleccionPais(string nombrePais)
         {
             this.nombrePais = nombrePais;
-            participantes = new List<SeleccionFutbol>();
+            integrantes = new List<SeleccionFutbol>();
         }
         //Este constructor recibe una lista que has llenado previamente en el main
-        public SeleccionPais(string nombrePais, List<SeleccionFutbol> participantes)
+        public SeleccionPais(string nombrePais, List<SeleccionFutbol> integrantes)
         {
             this.nombrePais = nombrePais;
-            this.participantes = participantes;
+            this.integrantes = integrantes;
         }
 
         //Este metodo recibe un objeto del tipo SeleccionFutbol(puede ser: Entrenador, Masajista,Futbolista) y lo añade a la lista
         public void AñadirIntegrante(SeleccionFutbol i)
         {
             //Si el metodo MeterIntegrante nos devuelve true, añadiremos un integrante
-            if (MeterIntegrante(i))
+            if (AltaSeleccion(i))
             {
                 //Si el objeto que queremos meter es un entrenador, le añadimos uno al contador de entrenadores.
                 if (i.GetType().Name == "Entrenador")
@@ -44,21 +44,20 @@ namespace Ejercicio1
                 }
                 //Como hemos verificado que se puede meter, lo metemos
                 Console.WriteLine("Integrante del tipo " + i.GetType().Name + " añadido.");
-                participantes.Add(i);
+                integrantes.Add(i);
             }
         }
 
         //Es un getter para que te devuelva la lista de SeleccionPais
         public List<SeleccionFutbol> GetSeleccionPais()
         {
-        return participantes;
+        return integrantes;
         }
 
-
-        public Boolean MeterIntegrante(SeleccionFutbol i)
+        public Boolean AltaSeleccion(SeleccionFutbol i)
         {
             //Primero compruebo que la seleccionPais no está llena, el tope es de 30 integrantes
-            if(participantes.Count <30)
+            if(integrantes.Count <30)
             {
                 //si el integrante es un entrenador y no se supera el limite, se puede meter con return true
                 if (i.GetType().Name == "Entrenador"&& numEntrenador <2)
@@ -75,11 +74,37 @@ namespace Ejercicio1
                 {
                     return true;
                 }
-                Console.ReadLine();
+                return false;
             }
             Console.WriteLine("Ya has seleccionado suficientes " + i.GetType().Name + "s en la selección");
-            Console.ReadLine();
+            //Console.ReadLine();
             return false;
         }
+        public Boolean BajaSeleccion()
+        {
+            Console.WriteLine("\nIntroduzca el Id del integrante que desee eliminar: ");
+            int baja = Convert.ToInt32(Console.ReadLine());
+
+            foreach (SeleccionFutbol integrante in integrantes)
+            {
+                if (baja == integrante.GetId())
+                {
+                    if(integrante.GetType().Name == "Entrenador")
+                    {
+                        numEntrenador--;
+                    }
+                    else if (integrante.GetType().Name == "Masajista")
+                    {
+                        numMasajista--;
+                    }
+                    integrantes.Remove(integrante);
+                    Console.WriteLine("Se ha borrado el integrante.");
+                    return true;
+                }
+            }
+            Console.WriteLine("El Id no existe.");
+            return false;
+        }
+
     }
 }

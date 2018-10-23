@@ -40,5 +40,15 @@ namespace Ejercicio1
             base.Accion();
             DirigirEntrenamiento();
         }
+        public override void PrepararPartido()
+        {
+            base.PrepararPartido();
+            DirigirEntrenamiento();
+        }
+        public override void JugarPartido()
+        {
+            base.JugarPartido();
+            DirigirPartido();
+        }
     }
 }

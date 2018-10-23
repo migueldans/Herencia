@@ -35,5 +35,15 @@ namespace Ejercicio1
             base.Accion();
             DarMasaje();
         }
+        public override void PrepararPartido()
+        {
+            base.PrepararPartido();
+            DarMasaje();
+        }
+        public override void JugarPartido()
+        {
+            base.JugarPartido();
+            DarMasaje();
+        }
     }
 }

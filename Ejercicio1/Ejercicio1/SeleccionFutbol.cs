@@ -10,8 +10,8 @@ namespace Ejercicio1
     {
         private int id, edad,cont;
         private string nombre, apellido;
-        private bool viajar=false;
-        private bool concentrarse=false;
+        private bool viajar=true;
+        private bool concentrarse=true;
 
         public SeleccionFutbol()
         {
@@ -114,6 +114,15 @@ namespace Ejercicio1
         public int Cont (int cont)
         {
             return cont;
+        }
+        public virtual void PrepararPartido()
+        {
+            Viajar();
+            Concentrarse();
+        }
+        public virtual void JugarPartido()
+        {
+
         }
     }
 }
